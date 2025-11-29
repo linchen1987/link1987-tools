@@ -121,8 +121,60 @@ export default function DateTimestampClient() {
                     <CardDescription>The current Unix timestamp (seconds)</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <div className="text-4xl font-mono font-bold text-[var(--primary)]">
-                        {currentTimestamp}
+                    <div className="flex flex-col gap-4">
+                        <div className="flex items-center justify-between p-4 rounded-lg bg-[var(--muted)]/50 border border-[var(--border)]">
+                            <div className="space-y-1">
+                                <div className="text-sm text-[var(--muted-foreground)] font-medium">Unix Timestamp</div>
+                                <div className="text-xl font-mono font-medium tracking-tight text-[var(--foreground)]">
+                                    {currentTimestamp}
+                                </div>
+                            </div>
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={() => {
+                                    navigator.clipboard.writeText(currentTimestamp.toString());
+                                }}
+                                title="Copy Timestamp"
+                                className="h-10 w-10 hover:bg-[var(--background)] hover:text-[var(--primary)] transition-colors"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                                </svg>
+                            </Button>
+                        </div>
+
+                        <div className="flex items-center justify-between p-4 rounded-lg bg-[var(--muted)]/50 border border-[var(--border)]">
+                            <div className="space-y-1">
+                                <div className="text-sm text-[var(--muted-foreground)] font-medium">Local Time</div>
+                                <div className="text-xl font-medium text-[var(--foreground)]">
+                                    {(() => {
+                                        const date = new Date(currentTimestamp * 1000);
+                                        const year = date.getFullYear();
+                                        const month = String(date.getMonth() + 1).padStart(2, '0');
+                                        const day = String(date.getDate()).padStart(2, '0');
+                                        const hours = String(date.getHours()).padStart(2, '0');
+                                        const minutes = String(date.getMinutes()).padStart(2, '0');
+                                        const seconds = String(date.getSeconds()).padStart(2, '0');
+                                        const timeZoneName = new Intl.DateTimeFormat('en-US', { timeZoneName: 'short' })
+                                            .formatToParts(date)
+                                            .find(part => part.type === 'timeZoneName')?.value || '';
+                                        return `${year}.${month}.${day} ${hours}:${minutes}:${seconds} ${timeZoneName}`;
+                                    })()}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </CardContent>
             </Card>
