@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Link1987 Tools",
   description: "A collection of useful tools",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({
