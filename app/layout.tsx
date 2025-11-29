@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Link1987 Tools",
-  description: "A collection of useful developer tools",
+  description: "A collection of useful tools",
 };
 
 export default function RootLayout({
