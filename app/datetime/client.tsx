@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
     Card,
     CardContent,
@@ -18,12 +18,17 @@ export default function DateTimestampClient() {
     const [currentTimestamp, setCurrentTimestamp] = useState<number>(
         Math.floor(Date.now() / 1000)
     );
+    const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentTimestamp(Math.floor(Date.now() / 1000));
         }, 1000);
         return () => clearInterval(interval);
+    }, []);
+
+    useEffect(() => {
+        inputRef.current?.focus();
     }, []);
 
     const handleConvert = () => {
@@ -90,6 +95,7 @@ export default function DateTimestampClient() {
                 <CardContent className="space-y-4">
                     <div className="flex gap-4">
                         <Input
+                            ref={inputRef}
                             placeholder="e.g. 1672531200"
                             value={input}
                             onChange={(e) => setInput(e.target.value)}

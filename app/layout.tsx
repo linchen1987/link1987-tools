@@ -4,6 +4,7 @@ import "./globals.css";
 import Link from "next/link";
 import { ThemeProvider } from "./components/theme-provider";
 import { ModeToggle } from "./components/mode-toggle";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -59,6 +60,7 @@ export default function RootLayout({
           <footer className="border-t border-[var(--border)] py-6 text-center text-sm text-[var(--muted-foreground)]">
             <p>© {new Date().getFullYear()} Link1987 Tools. Built for developers.</p>
           </footer>
+          <Toaster position="top-center" richColors />
         </ThemeProvider>
       </body>
     </html>
