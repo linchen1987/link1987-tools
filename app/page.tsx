@@ -159,6 +159,33 @@ const tools = [
       </svg>
     ),
   },
+  {
+    id: "color-display",
+    title: "Color Display",
+    description: "Preview an RGB color filling the screen and toggle true fullscreen display.",
+    href: "/color-display",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-6 w-6"
+      >
+        <path d="M19 11a4 4 0 0 1-4 4h-3l-2 2v-2H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4z" />
+        <circle cx="7.5" cy="10.5" r=".5" />
+        <circle cx="12" cy="7.5" r=".5" />
+        <circle cx="16.5" cy="10.5" r=".5" />
+        <path d="M21 15v5" />
+        <path d="M18.5 17.5H23.5" />
+      </svg>
+    ),
+  },
 ];
 
 export default function Home() {
