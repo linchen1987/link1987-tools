@@ -188,6 +188,32 @@ const tools = [
   },
 ];
 
+const externalLinks = [
+  {
+    id: "mstation",
+    title: "M Station",
+    description: "Send messages and transfer data across devices quickly and securely.",
+    href: "https://mstation.link1987.site/",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-6 w-6"
+      >
+        <path d="M22 2 11 13" />
+        <path d="M22 2 15 22l-4-9-9-4z" />
+      </svg>
+    ),
+  },
+];
+
 export default function Home() {
   return (
     <div className="space-y-8">
@@ -219,6 +245,49 @@ export default function Home() {
               </CardContent>
             </Card>
           </Link>
+        ))}
+        {externalLinks.map((tool) => (
+          <a
+            key={tool.id}
+            href={tool.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block h-full"
+          >
+            <Card className="h-full hover:bg-[var(--muted)]/50 transition-colors cursor-pointer">
+              <CardHeader>
+                <div className="flex items-center gap-4">
+                  <div className="p-2 bg-[var(--primary)]/10 rounded-lg text-[var(--primary)]">
+                    {tool.icon}
+                  </div>
+                  <CardTitle className="flex items-center gap-1">
+                    {tool.title}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="h-4 w-4 text-[var(--muted-foreground)]"
+                    >
+                      <path d="M15 3h6v6" />
+                      <path d="M10 14 21 3" />
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    </svg>
+                  </CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-base">
+                  {tool.description}
+                </CardDescription>
+              </CardContent>
+            </Card>
+          </a>
         ))}
       </div>
     </div>
